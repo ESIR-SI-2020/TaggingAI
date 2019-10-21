@@ -16,7 +16,7 @@ def detect_language(article_text) :
         accuracy = float(predictions[1][0])
         if accuracy < 0.5 :
             raise Exception('Accuracy too low', 'The model failed to detect precisly the article language. Accuracy : ' + str(accuracy))
-        elif language is not 'fr' and language is not 'en' :
+        elif language != 'fr' and language != 'en' :
             raise Exception('Language unsupported', 'This article is written in an unsupported language : ' + language)
         else :
             return language
