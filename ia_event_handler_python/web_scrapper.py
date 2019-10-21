@@ -2,14 +2,13 @@ import requests
 from bs4 import BeautifulSoup
 import logging
 
-
 # Function to extract title and text of an article from an URL
 # Return a string
 # Return "" if a error occured
-def news_text_recuperator(url) :
+def news_text_recuperator(logger, url) :
     try:
         raw_soup = BeautifulSoup(requests.get(url).content, 'html.parser')
-        logging.debug("news_text_recuperator : data recovered from " + str(url))
+        logger.debug("news_text_recuperator : data recovered from " + str(url))
         news_title = raw_soup.find('title').get_text()
         news_content_tab = raw_soup.find_all('p')
         news_content = ""
@@ -19,8 +18,9 @@ def news_text_recuperator(url) :
         return news_title + " " + news_content
 
     except requests.exceptions.ContentDecodingError as request_decoding_error:
-        logging.error("Request module content decoding error :\n" + str(request_decoding_error))
-        return ""
+        logger.error("'news_text_recuperator' ==> Request module content decoding error :\n" + str(request_decoding_error))
+        raise request_decoding_error
+
     except Exception as others_errors :
-        logging.error("An error as occured :\n" + str(others_errors))
-        return ""
+        logger.error("'news_text_recuperator' ==> An error as occured :\n" + str(others_errors))
+        raise others_errors
