@@ -34,8 +34,9 @@ for message in kafka_consumer :
         if (url_article is not None) :
             article_text = web_scrapper.news_text_recuperator(logger, url_article)
             article_lang = language_detector.detect_language(logger, article_text)
+            logger.debug("Article language is " + article_lang)
         else :
-            logger.debug("Article url not found in kafka message :" + str(message))
+            logger.critical("Article url not found in kafka message :" + str(message))
 
     except Exception as identifier:
-        logger.debug("Error for kafka message : ' " + str(message) + " ', error is " + identifier)
+        logger.critical("Error for kafka message : ' " + str(message) + " ', error is " + identifier)
