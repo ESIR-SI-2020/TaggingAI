@@ -2,6 +2,7 @@ import language_detector
 import web_scrapper
 import my_parser
 import my_logger
+import my_exceptions
 import kafka
 import logging
 from logging.handlers import RotatingFileHandler
@@ -30,20 +31,11 @@ for message in kafka_consumer :
         logger.debug("kafka message received on topic ' " + results.topic + " '")
         logger.debug("  - message content : ' " + str(message) + " '.")
         url_article = message['articleUrl']
-
-        article_text = web_scrapper.news_text_recuperator(logger, url_article)
-        article_lang = language_detector.detect_language(logger, article_text)
+        if (url_article is not None) :
+            article_text = web_scrapper.news_text_recuperator(logger, url_article)
+            article_lang = language_detector.detect_language(logger, article_text)
+        else :
+            logger.debug("Article url not found in kafka message :" + str(message))
 
     except Exception as identifier:
-        pass
-    
-
-
-
-    
-
-
-
-
-
-
+        logger.debug("Error for kafka message : ' " + str(message) + " ', error is " + identifier)
