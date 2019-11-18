@@ -5,11 +5,10 @@ import logging
 # This function takes a string and detect its language
 # Return the language as an acronyme
 # Supports french and english for now ("fr", "en")
+SUPPORTED_LANGUAGES = ['fr','eng']
 
 def detect_language(logger, article_text) :
-    SUPPORTED_LANGUAGES = ['fr','eng']
-    #reload(sys)
-    #sys.setdefaultencoding('UTF8')
+    
     lid_model = fasttext.load_model("lid.176.ftz")
     predictions = lid_model.predict(article_text)
     try:
