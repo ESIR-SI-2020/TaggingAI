@@ -20,3 +20,14 @@ def load_model(model_json_name, model_h5_name, logger) :
 
     return loaded_model
 
+# TODO
+# This function prepare the article text "one_hot encoding"
+def prepare_text(article_text) :
+    pass # TODO
+    return []
+
+# TODO
+# This function predict the label(s) of the article using the processed text and the loaded model
+def predict_labels(article_text_encoded, model) :
+    pass # TODO
+    return []
