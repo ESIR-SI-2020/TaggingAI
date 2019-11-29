@@ -53,12 +53,12 @@ for message in TEST :
             article_lang = language_detector.detect_language(logger, article_text)
             logger.debug("Article language is " + article_lang)
 
-            # The models are heavy, so we load them the first time a specific language model is needed
+            # The models are very heavy, so we lazy load them
             if article_lang not in modelTaggingDict :
                 modelTaggingDict[article_lang] = tagger_model.load_model("model_" + article_lang + ".json", "model_" + article_lang + ".h5", logger)
 
             # We prepare the text, because we can't feed raw text to the model
-            article_text_prepared = tagger_model.prepare_text(article_text)
+            article_text_prepared = tagger_model.prepare_text(article_text, article_lang)
             
             # We used the correct model for the detected language, to get the predicted labels
             labels_predited = tagger_model.predict_labels(article_text_prepared, modelTaggingDict[article_lang])
