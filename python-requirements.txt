@@ -7,4 +7,3 @@ langcodes
 nltk
 fasttext
 elasticsearch
-StringIO
