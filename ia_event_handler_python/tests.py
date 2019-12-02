@@ -7,5 +7,11 @@ import web_scrapper
 
 class IAeventHandlerTest(unittest.TestCase) :
     
-    def testParser(self) :
+    def testLogger(self) :
+        capturedOutput = StringIO.StringIO()
+        sys.stdout = capturedOutput
+        initLogger(True, True)
+        sys.stdout = sys.__stdout__
+        print(capturedOutput)
+        
         

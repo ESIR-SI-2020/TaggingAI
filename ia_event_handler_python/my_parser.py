@@ -23,5 +23,5 @@ def initParser() :
     parser.add_argument('--version', action='version', version='%(prog)s 0.0')
 
     results = parser.parse_args()
-
+    print(results)
     return results
