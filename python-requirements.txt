@@ -1,0 +1,9 @@
+numpy
+keras
+tensorflow
+bs4
+requests
+langcodes
+nltk
+fasttext
+elasticsearch
