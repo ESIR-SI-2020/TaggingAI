@@ -31,21 +31,16 @@ modelTaggingDict = {}
 
 
 # Main loop of the program
-#for message in kafka_consumer :
-TEST = []
-TEST.append({'articleUrl' : 'https://www.theguardian.com/us-news/2019/nov/27/trump-hong-kong-bills-signed-china-protest'})
-TEST.append({'articleUrl' : 'https://www.theguardian.com/commentisfree/2019/nov/28/tour-world-massive-attack-band-climate'})
-TEST.append({'articleUrl' : 'https://www.theguardian.com/football/blog/2019/nov/28/dries-mertens-napoli-rivals-liverpool-flaws'})
-TEST.append({'articleUrl' : 'https://www.theguardian.com/lifeandstyle/2019/nov/28/limpy-the-turkey-thanksgiving-reading-massachusetts'})
-TEST.append({'articleUrl' : 'https://www.theguardian.com/lifeandstyle/2019/nov/24/i-live-as-a-feminist-but-im-tired-of-being-so-furious-all-the-time-mariella-frostrup'})
-TEST.append({'articleUrl' : 'https://www.theguardian.com/lifeandstyle/2019/nov/24/how-to-blow-your-nose-properly'})
 
-TEST.append({'articleUrl' : 'https://www.lemonde.fr/les-decodeurs/video/2020/01/12/pourquoi-les-incendies-en-australie-sont-ils-si-vastes-et-violents-cette-annee_6025584_4355770.html'})
-TEST.append({'articleUrl' : 'https://www.lemonde.fr/economie/article/2020/01/13/industrie-la-france-reste-le-pays-europeen-le-plus-attractif_6025629_3234.html'})
-TEST.append({'articleUrl' : 'https://www.lemonde.fr/economie/article/2020/01/11/l-or-a-retrouve-tout-son-lustre-pour-le-plus-grand-bonheur-de-ses-thesauriseurs_6025525_3234.html'})
-TEST.append({'articleUrl' : 'https://www.lemonde.fr/politique/article/2020/01/13/retraites-ce-que-changent-les-annonces-d-edouard-philippe-sur-l-age-pivot_6025678_823448.html'})
+## For tests :
 
-for message in TEST :
+# TEST = []
+# TEST.append({'articleUrl' : 'https://someArticleUrl.test'})
+# TEST.append({...})
+# ...
+
+# replace by 'for message in TEST :'
+for message in kafka_consumer :
     try:
         logger.debug("kafka message received on topic ' " + results.topic + " '")
         logger.debug("  - message content : ' " + str(message) + " '.")
