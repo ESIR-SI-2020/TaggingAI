@@ -56,18 +56,32 @@ def prepare_text(article_text, article_lang) :
         TokenizerDict[article_lang] = loaded_tokenizer
 
     # Text processing, must be the same has the text preprocessing used for the models training
+    
     article_text_prepared = REPLACE_BY_SPACE_RE.sub(' ',article_text)
+    article_text_prepared = article_text_prepared.lower()
     article_text_prepared = BAD_SYMBOLS_RE.sub(' ',article_text_prepared)
     article_text_prepared = ' '.join(word for word in article_text_prepared.split() if word not in StopWordDict[article_lang]) 
     article_text_encoded = text_to_word_sequence(article_text_prepared)
 
     # Text tokenisation. Must have EXACTLY the same parameters than the tokenisation of the training texts
-    article_text_encoded = TokenizerDict[article_lang].texts_to_sequences(article_text_encoded)
-    article_text_encoded = sequence.pad_sequences(article_text_encoded)
+    article_text_encoded = TokenizerDict[article_lang].texts_to_sequences([article_text_encoded])
+
+    f = open(pathName + "/modelTagging/" + 'padding_' + article_lang + '.txt', "r")
+    padding = f.readline()
+    f.close() 
+
+    article_text_encoded = sequence.pad_sequences(article_text_encoded, maxlen=int(padding.replace(' ','')) ,value=0.0)
 
     return article_text_encoded
 
 # This function predict the label(s) of the article using the processed text and the loaded model
-def predict_labels(article_text_encoded, model) :
+def predict_labels(article_text_encoded, model, article_lang) :
+    print(article_text_encoded.shape)
     labelRes = model.predict(article_text_encoded)
-    return labelRes
+    f = open(pathName + "/modelTagging/" + 'labels_' + article_lang + '.txt', "r")
+    labels = f.readline().split(",")
+    f.close() 
+
+    indexMax = numpy.argmax(labelRes)
+
+    return labels[indexMax].replace(' ','')
