@@ -8,3 +8,4 @@ nltk
 fasttext
 elasticsearch
 unittest-xml-reporting
+kafka-python

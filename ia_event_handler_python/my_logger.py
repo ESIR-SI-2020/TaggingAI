@@ -1,7 +1,5 @@
 import logging
 from logging.handlers import RotatingFileHandler
-import StringIO
-
 
 def initLogger(ifFileLDebug, ifConsoleLDebug):
     
