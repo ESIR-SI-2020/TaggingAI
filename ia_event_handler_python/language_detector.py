@@ -1,15 +1,18 @@
 import fasttext
 import sys
+import os
 import logging
 
 # This function takes a string and detect its language
 # Return the language as an acronyme
 # Supports french and english for now ("fr", "en")
-SUPPORTED_LANGUAGES = ['fr','eng']
+SUPPORTED_LANGUAGES = ['fr','en']
 
 def detect_language(logger, article_text) :
     
-    lid_model = fasttext.load_model("lid.176.ftz")
+    executionFile = sys.argv[0]
+    pathName = os.path.dirname(executionFile)
+    lid_model = fasttext.load_model(pathName + "/lid.176.ftz")
     predictions = lid_model.predict(article_text)
     try:
         language = predictions[0][0].replace("__label__","").replace(" ","")
