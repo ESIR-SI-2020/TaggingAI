@@ -1,5 +1,4 @@
 import unittest
-import Main
 
 class IAeventHandlerTest(unittest.TestCase) :
     
