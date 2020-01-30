@@ -9,3 +9,4 @@ elasticsearch
 unittest-xml-reporting
 kafka-python
 tensorflow
+coverage
