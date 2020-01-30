@@ -1,6 +1,5 @@
 numpy
 keras
-tensorflow
 bs4
 requests
 langcodes
@@ -9,3 +8,4 @@ fasttext
 elasticsearch
 unittest-xml-reporting
 kafka-python
+tensorflow
