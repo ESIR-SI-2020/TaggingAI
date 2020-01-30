@@ -28,18 +28,11 @@ class IAeventHandlerTest(unittest.TestCase) :
         logger = my_logger.initLogger(False, False)
         language = language_detector.detect_language(logger, "Bonjour, je m'appelle Simon et j'adore faire des tests")
         self.assertEqual(language, "fr")
-        pass
 
     def testLanguageDetectionEN(self) :
         logger = my_logger.initLogger(False, False)
         language = language_detector.detect_language(logger, "Hi my name is Simon and i love doing unnitest on Python")
         self.assertEqual(language, "en")
-        pass
-
-    def testLanguageDetectionError(self) :
-        logger = my_logger.initLogger(False, False)
-        with self.assertRaises(Exception): language_detector.detect_language(logger, "afazfa azdazia adncaionioanzda pozjeanzdnazndpaz azndoanzd")
-        pass
         
     #Tests for web_scrapper.py
     def testWebScrapper(self) :
@@ -49,7 +42,6 @@ class IAeventHandlerTest(unittest.TestCase) :
         self.assertIn("Réforme des retraites",text)
         #Test if a part of the article has been scrapped
         self.assertIn("Ce sont des données attendues avec impatience.",text)
-        pass
     
     #Tests for tagger_moddel.py
     def testTaggerModelFrArticle(self) :
@@ -67,10 +59,6 @@ class IAeventHandlerTest(unittest.TestCase) :
         labels_predited = tagger_model.predict_labels(preparedText, model, "en")
         #print(labels_predited)
         self.assertIn("business", labels_predited)
-
-        pass
-
-
 
 if __name__ == '__main__':
     cov = coverage.Coverage()
