@@ -5,6 +5,7 @@ import tagger_model
 import language_detector
 import web_scrapper
 import xmlrunner
+import coverage
 
 class IAeventHandlerTest(unittest.TestCase) :
 
@@ -72,9 +73,14 @@ class IAeventHandlerTest(unittest.TestCase) :
 
 
 if __name__ == '__main__':
-       with open('results.xml', 'wb') as output:
+    cov = coverage.Coverage()
+    cov.start()
+    with open('results.xml', 'wb') as output:
         unittest.main(
             testRunner=xmlrunner.XMLTestRunner(output=output),
             failfast=False, buffer=False, catchbreak=False)
+    cov.stop()
+    cov.save()
+    cov.html_report()
         
         
