@@ -19,13 +19,17 @@ BAD_SYMBOLS_RE = re.compile('[^0-9a-z #+_]')
 StopWordDict = {}
 TokenizerDict = {}
 
-# Taking account of the execution path
-executionFile = sys.argv[0]
-pathName = os.path.dirname(executionFile)
+
 
 # Function to load keras model saved into json and h5. return the fully loaded model
 def load_model(model_json_name, model_h5_name, logger) :
     # Open saved model file
+
+    # Taking account of the execution path
+    executionFile = sys.argv[0]
+    pathName = os.path.dirname(executionFile)
+    if pathName is "" or pathName is None :
+        pathName = "."
 
     json_file = open(pathName + "/modelTagging/" + model_json_name, 'r')
     loaded_model_json = json_file.read()
@@ -39,9 +43,14 @@ def load_model(model_json_name, model_h5_name, logger) :
 
     return loaded_model
 
-# TODO
 # This function prepare the article text "one_hot encoding"
 def prepare_text(article_text, article_lang) :
+
+    # Taking account of the execution path
+    executionFile = sys.argv[0]
+    pathName = os.path.dirname(executionFile)
+    if pathName is "" or pathName is None :
+        pathName = "."
 
     # Lazy downloading of language stopwords
     if article_lang not in StopWordDict :
@@ -76,6 +85,13 @@ def prepare_text(article_text, article_lang) :
 
 # This function predict the label(s) of the article using the processed text and the loaded model
 def predict_labels(article_text_encoded, model, article_lang) :
+
+    # Taking account of the execution path
+    executionFile = sys.argv[0]
+    pathName = os.path.dirname(executionFile)
+    if pathName is "" or pathName is None :
+        pathName = "."
+
     print(article_text_encoded.shape)
     labelRes = model.predict(article_text_encoded)
     f = open(pathName + "/modelTagging/" + 'labels_' + article_lang + '.txt', "r")

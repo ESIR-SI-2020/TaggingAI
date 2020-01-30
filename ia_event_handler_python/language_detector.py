@@ -10,8 +10,12 @@ SUPPORTED_LANGUAGES = ['fr','en']
 
 def detect_language(logger, article_text) :
     
+    # Taking account of the execution path
     executionFile = sys.argv[0]
     pathName = os.path.dirname(executionFile)
+    if pathName is "" or pathName is None :
+        pathName = "."
+        
     lid_model = fasttext.load_model(pathName + "/lid.176.ftz")
     predictions = lid_model.predict(article_text)
     try:
