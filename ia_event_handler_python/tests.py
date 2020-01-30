@@ -4,45 +4,25 @@ import my_logger
 import tagger_model
 import language_detector
 import web_scrapper
+import xmlrunner
 
 class IAeventHandlerTest(unittest.TestCase) :
-
-    #Tests for my_parser.py :
-    #Test if every arguments have been correctly parsed to the result
-    def testParser(self) :
-        '''result = my_parser.initParser()
-        print(result.kafka_producer)
-        print(result.topic)
-        print(result.group_id)
-        print(result.console_log_debug)
-        print(result.file_log_debug)
-        self.assertEqual(result.kafka_producer, )
-        self.assertEqual(result.topic, )
-        self.assertEqual(result.group_id, )
-        self.assertEqual(result.console_log_debug, )
-        self.assertEqual(result.file_log_debug, )'''
-        pass
 
     #Tests for my_logger.py
     def testLoggerSucces(self) :
 
-        '''ifFileDebug = False and ifConsoleLDebug = False
-        logger = my_logger.initLogger(False, False)
-        
-        ifFileDebug = True and ifConsoleLDebug = False
-        logger = my_logger.initLogger(True, False)
+        #ifFileDebug = True and ifConsoleLDebug = True
+        my_logger.initLogger(True, True)
 
-        ifFileDebug = False and ifConsoleLDebug = True
-        logger = my_logger.initLogger(False, False)
+        with open ("activity.log", "r") as myfile:
+            data=myfile.readlines()
 
-        ifFileDebug = True and ifConsoleLDebug = True
-        logger = my_logger.initLogger(True, True)'''
+        self.assertIn('DEBUG :: Logger initialized', str(data))
 
         pass
 
     
     #Tests for language_detector.py
-    '''
     def testLanguageDetectionFR(self) :
         logger = my_logger.initLogger(False, False)
         language = language_detector.detect_language(logger, "Bonjour, je m'appelle Simon et j'adore faire des tests")
@@ -58,42 +38,43 @@ class IAeventHandlerTest(unittest.TestCase) :
     def testLanguageDetectionError(self) :
         logger = my_logger.initLogger(False, False)
         with self.assertRaises(Exception): language_detector.detect_language(logger, "afazfa azdazia adncaionioanzda pozjeanzdnazndpaz azndoanzd")
-        pass'''
+        pass
         
     #Tests for web_scrapper.py
-    '''def testWebScrapper(self) :
+    def testWebScrapper(self) :
         logger = my_logger.initLogger(False, False)
         text = web_scrapper.news_text_recuperator(logger, "https://www.lemonde.fr/politique/article/2020/01/18/cadre-non-cadre-au-smic-a-temps-partiel-avec-enfants-ou-pas-la-reforme-des-retraites-aura-un-impact-contraste-selon-les-parcours_6026461_823448.html")
         #Test if the title has been scrapped from the article
-        self.assertIn("Réforme des retraites : des conséquences très contrastées selon les parcours et les métiers",text)
+        self.assertIn("Réforme des retraites",text)
         #Test if a part of the article has been scrapped
         self.assertIn("Ce sont des données attendues avec impatience.",text)
-        pass'''
+        pass
     
     #Tests for tagger_moddel.py
     def testTaggerModelFrArticle(self) :
         #Load model
         logger = my_logger.initLogger(False, False)
-        model = tagger_model.load_model("model_fr.json", "model_fr.h5", logger)
-        print(model)
-        #self.assertIn("", model)
+        model = tagger_model.load_model("model_en.json", "model_en.h5", logger)
 
         #Prepare text
-        text = web_scrapper.news_text_recuperator(logger, "https://www.lemonde.fr/politique/article/2020/01/18/cadre-non-cadre-au-smic-a-temps-partiel-avec-enfants-ou-pas-la-reforme-des-retraites-aura-un-impact-contraste-selon-les-parcours_6026461_823448.html")
-        preparedText = tagger_model.prepare_text(text, "fr")
-        print(preparedText)
-        #self.assertIn("", preparedText)
+        text = web_scrapper.news_text_recuperator(logger, "https://www.nytimes.com/2020/01/29/opinion/coronavirus-china-government.html")
+        preparedText = tagger_model.prepare_text(text, "en")
+        #print(preparedText)
+        self.assertIn(0, preparedText)
 
         #Predict labels
-        labels_predited = tagger_model.predict_labels(preparedText, model, "fr")
-        print(labels_predited)
-        #self.assertIn("", labels_predited)
+        labels_predited = tagger_model.predict_labels(preparedText, model, "en")
+        #print(labels_predited)
+        self.assertIn("business", labels_predited)
 
         pass
 
 
 
 if __name__ == '__main__':
-    unittest.main()
+       with open('results.xml', 'wb') as output:
+        unittest.main(
+            testRunner=xmlrunner.XMLTestRunner(output=output),
+            failfast=False, buffer=False, catchbreak=False)
         
         
