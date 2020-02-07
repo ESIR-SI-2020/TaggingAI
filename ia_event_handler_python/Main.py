@@ -3,6 +3,7 @@ import web_scrapper
 import my_parser
 import my_logger
 import my_exceptions
+import elasticsearch_connector
 import tagger_model
 import kafka
 import logging
@@ -29,18 +30,20 @@ logger.debug("Kafka consumer initialized, with parameters ==> kafka_topic = ' " 
 # We initialize the model to None, because they are heavy and we don't know if they will be all used
 modelTaggingDict = {}
 
+# We initialize the elasticsearch connector
+elasticSearchServer = results.elastic_server.split(":")
+esIndex = results.elastic_index
+ESConnector = elasticsearch_connector.createConnection(elasticSearchServer[0], elasticSearchServer[1], logger)
+logger.debug("ESConnector initialized with " + elasticSearchServer[0] + ":" + elasticSearchServer[1])
 
 # Main loop of the program
 
 ## For tests :
+TEST = []
+TEST.append({'articleUrl' : 'https://www.theguardian.com/global-development/2020/feb/07/coronavirus-chinese-rage-death-whistleblower-doctor-li-wenliang'})
 
-# TEST = []
-# TEST.append({'articleUrl' : 'https://someArticleUrl.test'})
-# TEST.append({...})
-# ...
-
-# replace by 'for message in TEST :'
-for message in kafka_consumer :
+# replace by 'for message in kafka_consumer :'
+for message in TEST :
     try:
         logger.debug("kafka message received on topic ' " + results.topic + " '")
         logger.debug("  - message content : ' " + str(message) + " '.")
@@ -64,6 +67,9 @@ for message in kafka_consumer :
             labels_predited = tagger_model.predict_labels(article_text_prepared, modelTaggingDict[article_lang], article_lang)
 
             logger.debug("Label(s) '" + str(labels_predited) + "' detected for the kafka message : " + str(message))
+
+            # We try to update the suggestedTag field of the article in the elasticSearch database
+            elasticsearch_connector.updateSuggestedTags(esIndex,url_article, labels_predited, ESConnector, logger)
             
         else :
             

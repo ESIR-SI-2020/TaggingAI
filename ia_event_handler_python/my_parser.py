@@ -8,6 +8,12 @@ def initParser() :
     parser.add_argument('-kps','--kafka_producer_server', action='store', dest='kafka_producer',
                         help="The ip/url:port of the kafka producer. Mandatory parameter.", required=True)
 
+    parser.add_argument('-ess','--elastic_search_server', action='store', dest='elastic_server',
+                        help="The ip/url:port of the elasticSearch database. Mandatory parameter.", required=True)
+
+    parser.add_argument('-esi','--elastic_search_index',default='pocket', action='store', dest='elastic_index',
+                        help="The index name in the elasticSearch database. default index is 'pocket'.")
+
     parser.add_argument('-tn','--topic_name',default='ARTICLE_ADDED',action='store',dest='topic',
                         help="Let you specify the Kafka topic name. Events in your topic should respect the default topic structure. default topic is 'ARTICLE_ADDED'")
 
