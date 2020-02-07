@@ -29,15 +29,3 @@ def updateSuggestedTags(esIndex,article_url, predicted_tag, ESConnector, logger)
     except Exception as error:
         logger.critical("Error with Elasticsearch connector when trying to update an article : " + str(error))
         raise RuntimeError("Error with Elasticsearch connector when trying to update an article  : " + str(error))
-    
-
-
-# For testing purpose only
-# Add a article to the elasticsearch database
-def addArticleToElastic(esIndex,url, ESConnector, logger):
-    try:
-        article={'url' : url, 'owner' : 'owner', 'sharedBy' : 'lotofpeople', 'tags' : [], 'suggestedTags' : [] }
-        ESConnector.create(index=esIndex,id=1,body=article, doc_type='Article')
-    except Exception as error :
-        logger.critical("Error when creating article in elasticsearch : " + str(error))
-    

@@ -69,7 +69,6 @@ for message in TEST :
             logger.debug("Label(s) '" + str(labels_predited) + "' detected for the kafka message : " + str(message))
 
             # We try to update the suggestedTag field of the article in the elasticSearch database
-            elasticsearch_connector.addArticleToElastic(esIndex,url_article, ESConnector, logger) # For testing purpose only, we add the article to elasticsearch
             elasticsearch_connector.updateSuggestedTags(esIndex,url_article, labels_predited, ESConnector, logger)
             
         else :
