@@ -21,9 +21,10 @@ def updateSuggestedTags(esIndex,article_url, predicted_tag, ESConnector, logger)
         res = ESConnector.search(index=esIndex,body={'query':{'match_all':{}},
             "_source": ["url", article_url]}, doc_type='Article')
         logger.debug(str(res))
-        articleFoundID = 1
-
-        ESConnector.update(index=esIndex,id=articleFoundID, body=doc, doc_type='Article')
+        articleFoundID = res['hits']['hits'][0]['_id']        
+        logger.debug("Article found, ID is '" + articleFoundID + "'")
+        
+        ESConnector.update(index=esIndex,id=int(articleFoundID), body=doc, doc_type='Article')
 
 
     except Exception as error:
