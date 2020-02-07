@@ -1,7 +1,6 @@
 import logging
 from logging.handlers import RotatingFileHandler
 
-
 def initLogger(ifFileLDebug, ifConsoleLDebug):
     
     # Setting the logging
@@ -33,3 +32,5 @@ def initLogger(ifFileLDebug, ifConsoleLDebug):
     logger.debug('Logger initialized')
 
     return logger
+
+print(initLogger(False, False))

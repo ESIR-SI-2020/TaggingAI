@@ -1,9 +1,12 @@
 numpy
 keras
-tensorflow
 bs4
 requests
 langcodes
 nltk
 fasttext
-elasticsearch
+elasticsearch5
+unittest-xml-reporting
+kafka-python
+tensorflow
+coverage

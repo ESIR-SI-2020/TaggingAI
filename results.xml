@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+	<testsuite errors="0" failures="0" file=".py" name="IAeventHandlerTest-20200130094358" skipped="0" tests="6" time="1.394" timestamp="2020-01-30T09:43:59">
+		<testcase classname="IAeventHandlerTest" file="ia_event_handler_python\tests.py" line="32" name="testLanguageDetectionEN" time="0.037" timestamp="2020-01-30T09:43:58">
+			<system-out>
+<![CDATA[]]>			</system-out>
+			<system-err>
+<![CDATA[2020-01-30 09:43:58,302 :: DEBUG :: Logger initialized
+
+]]>			</system-err>
+		</testcase>
+		<testcase classname="IAeventHandlerTest" file="ia_event_handler_python\tests.py" line="38" name="testLanguageDetectionError" time="0.035" timestamp="2020-01-30T09:43:58">
+			<system-out>
+<![CDATA[]]>			</system-out>
+			<system-err>
+<![CDATA[2020-01-30 09:43:58,335 :: DEBUG :: Logger initialized
+2020-01-30 09:43:58,335 :: DEBUG :: Logger initialized
+
+2020-01-30 09:43:58,367 :: ERROR :: 'detect_language' ==> An error occured: 
+('Accuracy too low', 'The model failed to detect precisly the article language. Accuracy: 0.1384081095457077')
+2020-01-30 09:43:58,367 :: ERROR :: 'detect_language' ==> An error occured: 
+('Accuracy too low', 'The model failed to detect precisly the article language. Accuracy: 0.1384081095457077')
+]]>			</system-err>
+		</testcase>
+		<testcase classname="IAeventHandlerTest" file="ia_event_handler_python\tests.py" line="26" name="testLanguageDetectionFR" time="0.030" timestamp="2020-01-30T09:43:58">
+			<system-out>
+<![CDATA[]]>			</system-out>
+			<system-err>
+<![CDATA[2020-01-30 09:43:58,371 :: DEBUG :: Logger initialized
+2020-01-30 09:43:58,371 :: DEBUG :: Logger initialized
+2020-01-30 09:43:58,371 :: DEBUG :: Logger initialized
+
+]]>			</system-err>
+		</testcase>
+		<testcase classname="IAeventHandlerTest" file="ia_event_handler_python\tests.py" line="12" name="testLoggerSucces" time="0.008" timestamp="2020-01-30T09:43:58">
+			<system-out>
+<![CDATA[]]>			</system-out>
+			<system-err>
+<![CDATA[2020-01-30 09:43:58,401 :: WARNING :: CONSOLE LOG DEBUG MODE ACTIVATED
+2020-01-30 09:43:58,401 :: WARNING :: CONSOLE LOG DEBUG MODE ACTIVATED
+2020-01-30 09:43:58,401 :: WARNING :: CONSOLE LOG DEBUG MODE ACTIVATED
+2020-01-30 09:43:58,401 :: WARNING :: CONSOLE LOG DEBUG MODE ACTIVATED
+2020-01-30 09:43:58,402 :: WARNING :: FILE LOG DEBUG MODE ACTIVATED
+2020-01-30 09:43:58,402 :: WARNING :: FILE LOG DEBUG MODE ACTIVATED
+2020-01-30 09:43:58,402 :: WARNING :: FILE LOG DEBUG MODE ACTIVATED
+2020-01-30 09:43:58,402 :: WARNING :: FILE LOG DEBUG MODE ACTIVATED
+2020-01-30 09:43:58,404 :: DEBUG :: Logger initialized
+2020-01-30 09:43:58,404 :: DEBUG :: Logger initialized
+2020-01-30 09:43:58,404 :: DEBUG :: Logger initialized
+2020-01-30 09:43:58,404 :: DEBUG :: Logger initialized
+]]>			</system-err>
+		</testcase>
+		<testcase classname="IAeventHandlerTest" file="ia_event_handler_python\tests.py" line="54" name="testTaggerModelFrArticle" time="1.084" timestamp="2020-01-30T09:43:59">
+			<system-out>
+<![CDATA[(1, 779)
+]]>			</system-out>
+			<system-err>
+<![CDATA[2020-01-30 09:43:58,410 :: DEBUG :: Logger initialized
+2020-01-30 09:43:58,410 :: DEBUG :: Logger initialized
+2020-01-30 09:43:58,410 :: DEBUG :: Logger initialized
+2020-01-30 09:43:58,410 :: DEBUG :: Logger initialized
+2020-01-30 09:43:58,410 :: DEBUG :: Logger initialized
+2020-01-30 09:43:58,936 :: DEBUG :: Model model_en.json/model_en.h5 loaded
+2020-01-30 09:43:58,936 :: DEBUG :: Model model_en.json/model_en.h5 loaded
+2020-01-30 09:43:58,936 :: DEBUG :: Model model_en.json/model_en.h5 loaded
+2020-01-30 09:43:58,936 :: DEBUG :: Model model_en.json/model_en.h5 loaded
+2020-01-30 09:43:58,936 :: DEBUG :: Model model_en.json/model_en.h5 loaded
+2020-01-30 09:43:58,942 :: DEBUG :: Starting new HTTPS connection (1): www.nytimes.com:443
+2020-01-30 09:43:58,942 :: DEBUG :: Starting new HTTPS connection (1): www.nytimes.com:443
+2020-01-30 09:43:58,942 :: DEBUG :: Starting new HTTPS connection (1): www.nytimes.com:443
+2020-01-30 09:43:58,942 :: DEBUG :: Starting new HTTPS connection (1): www.nytimes.com:443
+2020-01-30 09:43:58,942 :: DEBUG :: Starting new HTTPS connection (1): www.nytimes.com:443
+2020-01-30 09:43:59,068 :: DEBUG :: https://www.nytimes.com:443 "GET /2020/01/29/opinion/coronavirus-china-government.html HTTP/1.1" 200 68549
+2020-01-30 09:43:59,068 :: DEBUG :: https://www.nytimes.com:443 "GET /2020/01/29/opinion/coronavirus-china-government.html HTTP/1.1" 200 68549
+2020-01-30 09:43:59,068 :: DEBUG :: https://www.nytimes.com:443 "GET /2020/01/29/opinion/coronavirus-china-government.html HTTP/1.1" 200 68549
+2020-01-30 09:43:59,068 :: DEBUG :: https://www.nytimes.com:443 "GET /2020/01/29/opinion/coronavirus-china-government.html HTTP/1.1" 200 68549
+2020-01-30 09:43:59,068 :: DEBUG :: https://www.nytimes.com:443 "GET /2020/01/29/opinion/coronavirus-china-government.html HTTP/1.1" 200 68549
+2020-01-30 09:43:59,140 :: DEBUG :: news_text_recuperator : data recovered from https://www.nytimes.com/2020/01/29/opinion/coronavirus-china-government.html
+2020-01-30 09:43:59,140 :: DEBUG :: news_text_recuperator : data recovered from https://www.nytimes.com/2020/01/29/opinion/coronavirus-china-government.html
+2020-01-30 09:43:59,140 :: DEBUG :: news_text_recuperator : data recovered from https://www.nytimes.com/2020/01/29/opinion/coronavirus-china-government.html
+2020-01-30 09:43:59,140 :: DEBUG :: news_text_recuperator : data recovered from https://www.nytimes.com/2020/01/29/opinion/coronavirus-china-government.html
+2020-01-30 09:43:59,140 :: DEBUG :: news_text_recuperator : data recovered from https://www.nytimes.com/2020/01/29/opinion/coronavirus-china-government.html
+]]>			</system-err>
+		</testcase>
+		<testcase classname="IAeventHandlerTest" file="ia_event_handler_python\tests.py" line="44" name="testWebScrapper" time="0.201" timestamp="2020-01-30T09:43:59">
+			<system-out>
+<![CDATA[]]>			</system-out>
+			<system-err>
+<![CDATA[2020-01-30 09:43:59,494 :: DEBUG :: Logger initialized
+2020-01-30 09:43:59,494 :: DEBUG :: Logger initialized
+2020-01-30 09:43:59,494 :: DEBUG :: Logger initialized
+2020-01-30 09:43:59,494 :: DEBUG :: Logger initialized
+2020-01-30 09:43:59,494 :: DEBUG :: Logger initialized
+2020-01-30 09:43:59,494 :: DEBUG :: Logger initialized
+2020-01-30 09:43:59,498 :: DEBUG :: Starting new HTTPS connection (1): www.lemonde.fr:443
+2020-01-30 09:43:59,498 :: DEBUG :: Starting new HTTPS connection (1): www.lemonde.fr:443
+2020-01-30 09:43:59,498 :: DEBUG :: Starting new HTTPS connection (1): www.lemonde.fr:443
+2020-01-30 09:43:59,498 :: DEBUG :: Starting new HTTPS connection (1): www.lemonde.fr:443
+2020-01-30 09:43:59,498 :: DEBUG :: Starting new HTTPS connection (1): www.lemonde.fr:443
+2020-01-30 09:43:59,498 :: DEBUG :: Starting new HTTPS connection (1): www.lemonde.fr:443
+2020-01-30 09:43:59,599 :: DEBUG :: https://www.lemonde.fr:443 "GET /politique/article/2020/01/18/cadre-non-cadre-au-smic-a-temps-partiel-avec-enfants-ou-pas-la-reforme-des-retraites-aura-un-impact-contraste-selon-les-parcours_6026461_823448.html HTTP/1.1" 200 None
+2020-01-30 09:43:59,599 :: DEBUG :: https://www.lemonde.fr:443 "GET /politique/article/2020/01/18/cadre-non-cadre-au-smic-a-temps-partiel-avec-enfants-ou-pas-la-reforme-des-retraites-aura-un-impact-contraste-selon-les-parcours_6026461_823448.html HTTP/1.1" 200 None
+2020-01-30 09:43:59,599 :: DEBUG :: https://www.lemonde.fr:443 "GET /politique/article/2020/01/18/cadre-non-cadre-au-smic-a-temps-partiel-avec-enfants-ou-pas-la-reforme-des-retraites-aura-un-impact-contraste-selon-les-parcours_6026461_823448.html HTTP/1.1" 200 None
+2020-01-30 09:43:59,599 :: DEBUG :: https://www.lemonde.fr:443 "GET /politique/article/2020/01/18/cadre-non-cadre-au-smic-a-temps-partiel-avec-enfants-ou-pas-la-reforme-des-retraites-aura-un-impact-contraste-selon-les-parcours_6026461_823448.html HTTP/1.1" 200 None
+2020-01-30 09:43:59,599 :: DEBUG :: https://www.lemonde.fr:443 "GET /politique/article/2020/01/18/cadre-non-cadre-au-smic-a-temps-partiel-avec-enfants-ou-pas-la-reforme-des-retraites-aura-un-impact-contraste-selon-les-parcours_6026461_823448.html HTTP/1.1" 200 None
+2020-01-30 09:43:59,599 :: DEBUG :: https://www.lemonde.fr:443 "GET /politique/article/2020/01/18/cadre-non-cadre-au-smic-a-temps-partiel-avec-enfants-ou-pas-la-reforme-des-retraites-aura-un-impact-contraste-selon-les-parcours_6026461_823448.html HTTP/1.1" 200 None
+2020-01-30 09:43:59,691 :: DEBUG :: news_text_recuperator : data recovered from https://www.lemonde.fr/politique/article/2020/01/18/cadre-non-cadre-au-smic-a-temps-partiel-avec-enfants-ou-pas-la-reforme-des-retraites-aura-un-impact-contraste-selon-les-parcours_6026461_823448.html
+2020-01-30 09:43:59,691 :: DEBUG :: news_text_recuperator : data recovered from https://www.lemonde.fr/politique/article/2020/01/18/cadre-non-cadre-au-smic-a-temps-partiel-avec-enfants-ou-pas-la-reforme-des-retraites-aura-un-impact-contraste-selon-les-parcours_6026461_823448.html
+2020-01-30 09:43:59,691 :: DEBUG :: news_text_recuperator : data recovered from https://www.lemonde.fr/politique/article/2020/01/18/cadre-non-cadre-au-smic-a-temps-partiel-avec-enfants-ou-pas-la-reforme-des-retraites-aura-un-impact-contraste-selon-les-parcours_6026461_823448.html
+2020-01-30 09:43:59,691 :: DEBUG :: news_text_recuperator : data recovered from https://www.lemonde.fr/politique/article/2020/01/18/cadre-non-cadre-au-smic-a-temps-partiel-avec-enfants-ou-pas-la-reforme-des-retraites-aura-un-impact-contraste-selon-les-parcours_6026461_823448.html
+2020-01-30 09:43:59,691 :: DEBUG :: news_text_recuperator : data recovered from https://www.lemonde.fr/politique/article/2020/01/18/cadre-non-cadre-au-smic-a-temps-partiel-avec-enfants-ou-pas-la-reforme-des-retraites-aura-un-impact-contraste-selon-les-parcours_6026461_823448.html
+2020-01-30 09:43:59,691 :: DEBUG :: news_text_recuperator : data recovered from https://www.lemonde.fr/politique/article/2020/01/18/cadre-non-cadre-au-smic-a-temps-partiel-avec-enfants-ou-pas-la-reforme-des-retraites-aura-un-impact-contraste-selon-les-parcours_6026461_823448.html
+]]>			</system-err>
+		</testcase>
+	</testsuite>
+</testsuites>
